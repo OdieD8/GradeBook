@@ -24,9 +24,7 @@ namespace GradeBook
         }
 
         public abstract event GradeAddedDelegate GradeAdded;
-
         public abstract void AddGrade(double grade);
-
         public abstract Statistics GetStatistics();
     }
 
@@ -40,13 +38,31 @@ namespace GradeBook
 
         public override void AddGrade(double grade)
         {
-            var writer = File.AppendText($"{Name}.txt");
-            writer.WriteLine(grade);
+            using (var writer = File.AppendText($"{Name}.txt"))
+            {
+                writer.WriteLine(grade);
+                if(GradeAdded != null)
+                {
+                    GradeAdded(this, new EventArgs());
+                }
+            }
         }
 
         public override Statistics GetStatistics()
         {
-            throw new NotImplementedException();
+            var result = new Statistics();
+
+            using (var reader = File.OpenText($"{Name}.txt"))
+            {
+                var line = reader.ReadLine();
+                while (line != null)
+                {
+                    var number = double.Parse(line);
+                    result.Add(number);
+                    line = reader.ReadLine();
+                }
+            }
+            return result;
         }
     }
 
@@ -56,27 +72,6 @@ namespace GradeBook
         {
             grades = new List<double>();
             Name = name;
-        }
-        public void AddGrade(char letter)
-        {
-            switch (letter)
-            {
-                case 'A':
-                    AddGrade(90);
-                    break;
-                case 'B':
-                    AddGrade(80);
-                    break;
-                case 'C':
-                    AddGrade(70);
-                    break;
-                case 'D':
-                    AddGrade(60);
-                    break;
-                default:
-                    AddGrade(0);
-                    break;
-            }
         }
 
         public override void AddGrade(double grade)
@@ -100,38 +95,11 @@ namespace GradeBook
         public override Statistics GetStatistics()
         {
             var result = new Statistics();
-            result.Average = 0.0;
-            result.High = double.MinValue;
-            result.Low = double.MaxValue;
+
             foreach(var grade in grades)
             {
-                result.Low= Math.Min(grade, result.Low);
-                result.High = Math.Max(grade, result.High);
-                result.Average += grade;
+                result.Add(grade);
             }
-            result.Average /= grades.Count;
-
-            if (result.Average >= 90.0)
-            {
-                result.Letter = 'A';
-            }
-            else if (result.Average >= 80.0)
-            {
-                result.Letter = 'B';
-            }
-            else if (result.Average >= 70.0)
-            {
-                result.Letter = 'C';
-            }
-            else if (result.Average >= 60.0)
-            {
-                result.Letter = 'D';
-            }
-            else
-            {
-                result.Letter = 'F';
-            }
-
             return result;
         }
 
