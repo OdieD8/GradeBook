@@ -1,0 +1,8 @@
+C:\Odie\Projects\GradeBook\UnitTestProject1\bin\Debug\UnitTestProject1.dll
+C:\Odie\Projects\GradeBook\UnitTestProject1\bin\Debug\UnitTestProject1.pdb
+C:\Odie\Projects\GradeBook\UnitTestProject1\bin\Debug\GradeBook.exe
+C:\Odie\Projects\GradeBook\UnitTestProject1\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Odie\Projects\GradeBook\UnitTestProject1\bin\Debug\GradeBook.pdb
+C:\Odie\Projects\GradeBook\UnitTestProject1\obj\Debug\GradeBook.Tests.csprojResolveAssemblyReference.cache
+C:\Odie\Projects\GradeBook\UnitTestProject1\obj\Debug\UnitTestProject1.dll
+C:\Odie\Projects\GradeBook\UnitTestProject1\obj\Debug\UnitTestProject1.pdb

@@ -1,0 +1,6 @@
+C:\Odie\Projects\GradeBook\GradeBook\bin\Debug\GradeBook.exe.config
+C:\Odie\Projects\GradeBook\GradeBook\bin\Debug\GradeBook.exe
+C:\Odie\Projects\GradeBook\GradeBook\bin\Debug\GradeBook.pdb
+C:\Odie\Projects\GradeBook\GradeBook\obj\Debug\GradeBook.exe
+C:\Odie\Projects\GradeBook\GradeBook\obj\Debug\GradeBook.pdb
+C:\Odie\Projects\GradeBook\GradeBook\obj\Debug\GradeBook.csprojResolveAssemblyReference.cache
